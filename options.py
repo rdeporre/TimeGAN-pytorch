@@ -105,7 +105,8 @@ class Options():
         """ Parse Arguments.
         """
 
-        self.opt = self.parser.parse_args()
+        # self.opt = self.parser.parse_args()
+        self.opt = self.parser.parse_known_args()[0]
         self.opt.isTrain = self.isTrain  # train or test
 
         str_ids = self.opt.gpu_ids.split(',')

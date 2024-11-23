@@ -77,7 +77,7 @@ def extract_time (data):
   return time, max_seq_len
 
 
-def random_generator (batch_size, z_dim, T_mb, max_seq_len):
+def random_generator (batch_size, z_dim, T_mb, max_seq_len, mean = 0.0, std = 1.0):
   """Random vector generation.
   
   Args:
@@ -92,7 +92,7 @@ def random_generator (batch_size, z_dim, T_mb, max_seq_len):
   Z_mb = list()
   for i in range(batch_size):
     temp = np.zeros([max_seq_len, z_dim])
-    temp_Z = np.random.uniform(0., 1, [T_mb[i], z_dim])
+    temp_Z = np.random.uniform(mean, std, [T_mb[i], z_dim])
     temp[:T_mb[i],:] = temp_Z
     Z_mb.append(temp_Z)
   return Z_mb
